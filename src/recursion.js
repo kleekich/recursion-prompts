@@ -110,7 +110,7 @@ var modulo = function(x, y) {
 	if(y=== 0) return NaN;
 	if(x < y) return x;
 	else if(x === y) return 0;
-	else if(x < 0 && y < 0) modulo(x+y, y);
+	else if(x < 0 && y < 0) -modulo(x+y, y);
 	
 	else return modulo(x-y, y);
 };
@@ -140,6 +140,7 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -147,11 +148,16 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+	if(str1.length === 0 && str2.length === 0) return true;
+	return str1.charAt(0) === str2.charAt(0) && compareStr(str1.substring(1), str2.substring(1));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+	if(str.length === 0) return [];
+
+	return [str.charAt(0)].concat(createArray(str.substring(1)));
 };
 
 // 17. Reverse the order of an array
