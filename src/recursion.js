@@ -372,12 +372,10 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
-	if(array.length === 0) return [];
-	if(array[0]<0){
-		firstElement = -array[0];
-		return 
-	}
-		
+	if (array.length === 0) return array;
+    if(array[0] < 0) array[0] = -array[0];
+    if(array[1] > 0) array[1] = -array[1];
+    return [array[0], array[1]].concat(alternateSign(array.slice(2)));
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
