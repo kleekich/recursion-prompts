@@ -232,15 +232,13 @@ var countValuesInObj = function(obj, value) {
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
 var replaceKeysInObj = function(obj, oldKey, newKey) {
-	if(!obj.hasOwnProperty(oldKey)) return obj;
-	else{
-		obj[newKey] = obj[oldKey];
-		delete obj[oldKey];
-	}
 	for(var key in obj){
+		if(key === oldKey){
+			obj[newKey] = obj[oldKey];
+			delete obj[oldKey];
+		}
 		if(typeof obj[key] === 'object') obj[key] = replaceKeysInObj(obj[key], oldKey, newKey);
 	}
-	
 	return obj;
 };
 
