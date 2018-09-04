@@ -304,7 +304,7 @@ var nestedEvenSum = function(obj) {
 var flatten = function(array) {
 	var arr = [];
 	for(var i = 0; i < array.length; i++){
-		if(Array.isArray(array[i])) arr.push(flatten(array[i]));
+		if(Array.isArray(array[i])) arr.push(...flatten(array[i]));
 		else arr.push(array[i]);
 	}
 	return arr;
