@@ -248,9 +248,11 @@ var replaceKeysInObj = function(obj, oldKey, newKey) {
 // fibonacci(5); // [0,1,1,2,3,5]
 // Note: The 0 is not counted.
 var fibonacci = function(n) {
-	if(n===0) return [0];
-	else if(n<=1) return [1];
-	else return fibonacci(n-2).concat(fibonacci(n-1)).concat([n]);
+	if(n===0 || n<0) return null;
+	else if(n===1) return [0, 1];
+	else{
+		var arr = fibonacci(n-1);
+	} return arr.concat(arr[n-1]+arr[n-2]);
 };
 
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
@@ -441,6 +443,12 @@ var tagCount = function(tag, node) {
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
 var binarySearch = function(array, target, min, max) {
+	if(min>max) return null;
+	var mid = min + (max-min)/2;
+	if(array[mid] === target) return mid;
+	else if(array[mid] < target) return binarySearch(array, target, mid, max);
+	else return binarySearch(array, target, min , mid);
+
 };
 
 // 39. Write a merge sort function.
