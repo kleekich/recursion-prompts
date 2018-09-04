@@ -371,12 +371,63 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+	if(array.length === 0) return [];
+	if(array[0]<0){
+		firstElement = -array[0];
+		return 
+	}
+		
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+	
+	var res = '';
+	for(var i = 0; i < str.length; i++){
+		var curr = str.charAt(i);
+		var equivalentStr = '';
+		if('0'<=curr && curr <= '9'){
+			switch(curr){
+				case '0':
+				equivalentStr = 'zero';
+				break;
+				case '1':
+				equivalentStr = 'one';
+				break;
+				case '2':
+				equivalentStr = 'two';
+				break;
+				case '3':
+				equivalentStr = 'three';
+				break;
+				case '4':
+				equivalentStr = 'four';
+				break;
+				case '5':
+				equivalentStr = 'five';
+				break;
+				case '6':
+				equivalentStr = 'six';
+				break;
+				case '7':
+				equivalentStr = 'seven';
+				break;
+				case '8':
+				equivalentStr = 'eight';
+				break;
+				case '9':
+				equivalentStr = 'nine';
+				break;
+			}
+			return res +=equivalentStr+numToText(str.substring(i+1));
+		}else{
+			res += str.charAt(i);
+		}
+	}
+	return res;
+	
 };
 
 
